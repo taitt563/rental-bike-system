@@ -7,6 +7,7 @@ import 'package:bike_rental_online/data/repositories_impl/post_repository_impl.d
 import 'package:bike_rental_online/domain/repositories/auth_repository.dart';
 import 'package:bike_rental_online/domain/repositories/post_repository.dart';
 import 'package:bike_rental_online/presentation/controllers/auth_controller.dart';
+import 'package:bike_rental_online/presentation/controllers/dashboard_controller.dart';
 import 'package:bike_rental_online/presentation/controllers/splash_controller.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +18,9 @@ class Dependency {
 
     // splash
     Get.lazyPut<SplashController>(() => SplashController());
+    // Get.lazyPut<AppController>(() => AppController());
+    //dashboard
+    Get.lazyPut<DashboardController>(() => DashboardController());
     // auth
     Get.lazyPut<AuthRepository>(() => AuthRepositoryImpl());
     //photos

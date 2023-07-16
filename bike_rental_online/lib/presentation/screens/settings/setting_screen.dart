@@ -1,12 +1,18 @@
+import 'package:bike_rental_online/presentation/controllers/auth_controller.dart';
+import 'package:bike_rental_online/presentation/screens/components/custom_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SettingsScreen extends StatelessWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final AuthController authController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Settings"),
-      ),
+      key: scaffoldKey,
+      appBar: AppBarWidget(
+          scaffoldKey: scaffoldKey, title: "Settings", showDrawer: false),
       body: ListView(
         children: [
           ListTile(
@@ -30,8 +36,7 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             title: Text("Log Out"),
             onTap: () {
-              // Xử lý khi người dùng chọn "Log Out"
-              // Đăng xuất người dùng và chuyển về màn hình đăng nhập hoặc màn hình khác tùy thuộc vào luồng ứng dụng của bạn.
+              authController.logoutAndReset();
             },
           ),
         ],

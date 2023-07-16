@@ -1,6 +1,7 @@
 import 'package:bike_rental_online/presentation/routes/app_pages.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,10 +13,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fade,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primaryColor: Colors.white, // Chỉnh màu chính của app
+
         useMaterial3: true,
       ),
       initialRoute: AppRoutes.Splash,
+      defaultGlobalState: true,
+      enableLog: true,
       getPages: AppPages.pages,
     );
   }
