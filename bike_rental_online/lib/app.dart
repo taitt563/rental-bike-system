@@ -1,11 +1,16 @@
 import 'package:bike_rental_online/presentation/routes/app_pages.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
+import 'package:flutter/material.dart' as FlutterMaterial;
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
+import 'presentation/controllers/cart_controller.dart';
+
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final CartController _cartController = Get.put(CartController());
+  MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -13,8 +18,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fade,
       theme: ThemeData(
-        primaryColor: Colors.white, // Chỉnh màu chính của app
-
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: FlutterMaterial.Colors.white),
         useMaterial3: true,
       ),
       initialRoute: AppRoutes.Splash,

@@ -45,15 +45,19 @@ class SplashController extends GetxController {
     checkLoginStatus().then((_) {
       if (isLoggedIn.value) {
         Future.delayed(
-          Duration(seconds: 2),
+          Duration(seconds: 3),
           () {
             Get.offAllNamed(AppRoutes.Dashboard);
           },
         );
         // Chuyển hướng đến HomeScreen nếu đã đăng nhập
       } else {
-        Get.offAllNamed(AppRoutes
-            .Signin); // Chuyển hướng đến LoginScreen nếu chưa đăng nhập
+        Future.delayed(
+          Duration(seconds: 3),
+          () {
+            Get.offAllNamed(AppRoutes.Signin);
+          },
+        ); // Chuyển hướng đến LoginScreen nếu chưa đăng nhập
       }
     });
   }

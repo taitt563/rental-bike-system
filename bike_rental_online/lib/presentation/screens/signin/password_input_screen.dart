@@ -19,25 +19,23 @@ class PasswordInputScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              'Nhập mật khẩu',
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16.0),
-            Obx(
-              () => Text(
+        child: Obx(
+          () => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Nhập mật khẩu',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 16.0),
+              Text(
                 'Vui lòng nhập mật khẩu Sbike của email ${authController.email.value}',
                 style: TextStyle(fontSize: 16.0),
               ),
-            ),
-            SizedBox(height: 16.0),
-            Form(
-              key: _formKey,
-              child: Obx(
-                () => TextFormField(
+              SizedBox(height: 16.0),
+              Form(
+                key: _formKey,
+                child: TextFormField(
                   onChanged: authController.updatePassword,
                   obscureText: !authController.isPasswordVisible.value,
                   decoration: InputDecoration(
@@ -74,47 +72,50 @@ class PasswordInputScreen extends StatelessWidget {
                   },
                 ),
               ),
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  authController.loginCall(authController.email.value,
-                      authController.password.value);
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4.0),
-                ),
-                elevation: 2.0,
-                backgroundColor: Color(0xFFFF7643),
-              ),
-              child: Text(
-                'Tiếp tục',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            SizedBox(height: 16.0),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: TextButton(
+              SizedBox(height: 16.0),
+              ElevatedButton(
                 onPressed: () {
-                  // Xử lý khi người dùng nhấn vào "Quên mật khẩu?"
-                  // Điều hướng đến trang khôi phục mật khẩu
+                  if (_formKey.currentState!.validate()) {
+                    authController.loginCall(authController.email.value,
+                        authController.password.value);
+                  }
+                  ;
                 },
-                child: Text(
-                  'Quên mật khẩu?',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 16.0,
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4.0),
+                  ),
+                  elevation: 2.0,
+                  backgroundColor: Color(0xFFFF7643),
+                ),
+                child: authController.isLoading.value
+                    ? CircularProgressIndicator()
+                    : Text(
+                        'Tiếp tục',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+              ),
+              SizedBox(height: 16.0),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: TextButton(
+                  onPressed: () {
+                    // Xử lý khi người dùng nhấn vào "Quên mật khẩu?"
+                    // Điều hướng đến trang khôi phục mật khẩu
+                  },
+                  child: Text(
+                    'Quên mật khẩu?',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 16.0,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

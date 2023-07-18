@@ -39,19 +39,19 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             backgroundColor: Colors.white,
             selectedIndex: controller.tabIndex,
             showElevation: true,
-            itemCornerRadius: 24,
+            itemCornerRadius: 7.0,
             curve: Curves.easeIn,
             onItemSelected: controller.changeTabIndex,
             items: <BottomNavyBarItem>[
               BottomNavyBarItem(
                 icon: SvgPicture.asset(
-                  'assets/icons/icons8-home.svg',
-                  height: 24, // Chiều cao của biểu tượng
-                  width: 24, // Chiều rộng của biểu tượng
-                  color: _inactiveColor,
+                  'assets/icons/Shop Icon.svg',
+                  height: 20, // Chiều cao của biểu tượng
+                  width: 20, // Chiều rộng của biểu tượng
+                  color: Color(0xFFFF7643),
                 ),
-                title: Text('Home'),
-                activeColor: Colors.green,
+                title: Text('Trang chủ'),
+                activeColor: Color(0xFFFF7643),
                 inactiveColor: _inactiveColor,
                 textAlign: TextAlign.center,
               ),
@@ -60,10 +60,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   'assets/icons/icons8-bookmark.svg',
                   height: 24, // Chiều cao của biểu tượng
                   width: 24, // Chiều rộng của biểu tượng
-                  color: _inactiveColor, // Màu sắc của biểu tượng
+                  color: Color(0xFFFF7643), // Màu sắc của biểu tượng
                 ),
-                title: Text('Bookmark'),
-                activeColor: Colors.purpleAccent,
+                title: Text('Hoạt động'),
+                activeColor: Color(0xFFFF7643),
                 inactiveColor: _inactiveColor,
                 textAlign: TextAlign.center,
               ),
@@ -72,12 +72,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   'assets/icons/icons8-mailbox.svg',
                   height: 24, // Chiều cao của biểu tượng
                   width: 24, // Chiều rộng của biểu tượng
-                  color: _inactiveColor,
+                  color: Color(0xFFFF7643),
                 ),
                 title: Text(
-                  'Messages',
+                  'Thông báo',
                 ),
-                activeColor: Colors.pink,
+                activeColor: Color(0xFFFF7643),
                 inactiveColor: _inactiveColor,
                 textAlign: TextAlign.center,
               ),
@@ -86,10 +86,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   'assets/icons/icons8-puzzle.svg',
                   height: 24, // Chiều cao của biểu tượng
                   width: 24,
-                  color: _inactiveColor, // Chiều rộng của biểu tượng
+                  color: Color(0xFFFF7643), // Chiều rộng của biểu tượng
                 ),
-                title: Text('Settings'),
-                activeColor: Colors.blue,
+                title: Text('Cài đặt'),
+                activeColor: Color(0xFFFF7643),
                 inactiveColor: _inactiveColor,
                 textAlign: TextAlign.center,
               ),

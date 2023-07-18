@@ -42,7 +42,6 @@ class AuthRepositoryImpl extends AuthRepository {
     } catch (e) {
       // Xử lý lỗi đăng ký
       print('Registration error: $e');
-      Get.snackbar('Đăng ký', 'Đăng ký không thành công');
       return false; // Đăng ký không thành công
     }
   }

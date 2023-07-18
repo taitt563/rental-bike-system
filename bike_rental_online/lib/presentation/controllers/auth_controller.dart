@@ -2,6 +2,7 @@ import 'package:bike_rental_online/data/repositories_impl/auth_repository_impl.d
 import 'package:bike_rental_online/domain/repositories/auth_repository.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
@@ -29,6 +30,7 @@ class AuthController extends GetxController {
   AuthController(this.authRepository);
   Rx<User?> currentUser = Rx<User?>(null);
   RxBool isLoggedIn = false.obs;
+  RxBool isLoading = false.obs;
 
   Future<void> loginCall(String email, String password) async {
     try {
@@ -36,6 +38,8 @@ class AuthController extends GetxController {
       bool loginSuccess = await authRepository.login(email, password);
       if (loginSuccess) {
         isLoggedIn.value = true;
+        Get.snackbar('Đăng nhập', 'Đăng nhập thành công');
+        await Future.delayed(Duration(seconds: 2));
         Get.offAllNamed(AppRoutes.Dashboard);
       }
     } catch (e) {
@@ -73,7 +77,7 @@ class AuthController extends GetxController {
       }
     } catch (e) {
       print('Đăng ký không thành công: $e');
-      Get.snackbar('Đăng ký', 'Đăng ký không thành công');
+      Get.snackbar('Thông báo', 'Đăng ký không thành công');
     }
   }
 

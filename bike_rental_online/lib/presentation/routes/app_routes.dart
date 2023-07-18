@@ -9,7 +9,7 @@ class AppRoutes {
   static const Settings = '/settings';
   static const Bookmarks = '/bookmarks';
   static const Mailbox = '/mailbox';
-
+  static const BikeDetail = '/bikeDetail';
   static const PostsPage = '/postsPage';
-  
+  static const Cart = '/cart';
 }
