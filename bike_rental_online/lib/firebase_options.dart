@@ -67,6 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '206322256402',
     projectId: 'bike-rental-project-de5fd',
     storageBucket: 'bike-rental-project-de5fd.appspot.com',
+    androidClientId: '206322256402-0sjb6ro071j0ud1fgm2pgcb21q7m975p.apps.googleusercontent.com',
     iosClientId: '206322256402-3obe8jb31nvqr0s4or5fih3rgg5lms72.apps.googleusercontent.com',
     iosBundleId: 'com.example.bikeRentalOnline',
   );
@@ -77,6 +78,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '206322256402',
     projectId: 'bike-rental-project-de5fd',
     storageBucket: 'bike-rental-project-de5fd.appspot.com',
+    androidClientId: '206322256402-0sjb6ro071j0ud1fgm2pgcb21q7m975p.apps.googleusercontent.com',
     iosClientId: '206322256402-ikol1cmvgobuvcfmh5e0jli61cbh3pi6.apps.googleusercontent.com',
     iosBundleId: 'com.example.bikeRentalOnline.RunnerTests',
   );

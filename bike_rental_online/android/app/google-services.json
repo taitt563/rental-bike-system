@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "206322256402-0sjb6ro071j0ud1fgm2pgcb21q7m975p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bike_rental_online",
+            "certificate_hash": "4eba9b9deb060c746597a2a7c6f3fa25f7714229"
+          }
+        },
+        {
           "client_id": "206322256402-2j9rf44j5r1aeg13livkt8fcq6e0u29k.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "206322256402-2j9rf44j5r1aeg13livkt8fcq6e0u29k.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "206322256402-3obe8jb31nvqr0s4or5fih3rgg5lms72.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bikeRentalOnline"
+              }
             }
           ]
         }

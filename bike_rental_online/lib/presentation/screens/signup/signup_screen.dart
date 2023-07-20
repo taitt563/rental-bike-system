@@ -1,4 +1,5 @@
 import 'package:bike_rental_online/presentation/controllers/auth_controller.dart';
+import 'package:bike_rental_online/presentation/screens/signup/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late final TextEditingController _passwordController;
 
   late final TextEditingController _confirmPasswordController;
+  
 
   @override
   void initState() {
@@ -175,7 +177,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        // Gọi hàm đăng ký từ AuthController
                         _authController.registerCall(
                           _emailController.text,
                           _passwordController.text,

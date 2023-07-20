@@ -1,9 +1,7 @@
 import 'package:bike_rental_online/data/models/bikes_model.dart';
 import 'package:bike_rental_online/presentation/controllers/bike_controller.dart';
-import 'package:bike_rental_online/presentation/controllers/category_controller.dart';
 import 'package:bike_rental_online/presentation/controllers/home_controller.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
-import 'package:bike_rental_online/presentation/screens/detail/bike_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -18,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  final HomeController _homeController = Get.find<HomeController>();
   final BikeController _bikeController = Get.find<BikeController>();
   List<String> categoryList = [
     'All',
@@ -96,10 +93,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+        bottom: PreferredSize(
+          child: Container(
+            height: 1.0,
+            color: Colors.grey.withOpacity(0.5),
+          ),
+          preferredSize: Size.fromHeight(1.0),
+        ),
       ),
       body: Container(
         margin: EdgeInsets.only(
-          top: 32.0,
+          top: 16.0,
           left: 32.0,
           right: 32.0,
         ),

@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:bike_rental_online/presentation/controllers/auth_controller.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -47,7 +45,7 @@ class SplashController extends GetxController {
         Future.delayed(
           Duration(seconds: 3),
           () {
-            Get.offAllNamed(AppRoutes.Dashboard);
+            Get.offAllNamed(AppRoutes.MainTab);
           },
         );
         // Chuyển hướng đến HomeScreen nếu đã đăng nhập

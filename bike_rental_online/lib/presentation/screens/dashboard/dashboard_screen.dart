@@ -1,6 +1,6 @@
-import 'package:bike_rental_online/presentation/controllers/auth_controller.dart';
+
 import 'package:bike_rental_online/presentation/controllers/dashboard_controller.dart';
-import 'package:bike_rental_online/presentation/routes/app_routes.dart';
+
 import 'package:bike_rental_online/presentation/screens/bookmarks/bookmark_screen.dart';
 import 'package:bike_rental_online/presentation/screens/home/home_screen.dart';
 import 'package:bike_rental_online/presentation/screens/mailbox/mailbox_screen.dart';

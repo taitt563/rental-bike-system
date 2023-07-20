@@ -1,5 +1,6 @@
 import 'package:bike_rental_online/presentation/controllers/auth_controller.dart';
 import 'package:bike_rental_online/presentation/screens/components/custom_appbar.dart';
+import 'package:bike_rental_online/presentation/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             title: Text("Account Settings"),
             onTap: () {
-              // Xử lý khi người dùng chọn "Account Settings"
+              Get.to(() => ProfileScreen());
             },
           ),
           ListTile(

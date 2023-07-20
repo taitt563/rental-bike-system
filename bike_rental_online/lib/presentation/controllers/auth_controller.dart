@@ -1,8 +1,11 @@
+import 'package:bike_rental_online/data/models/user_model.dart';
 import 'package:bike_rental_online/data/repositories_impl/auth_repository_impl.dart';
+import 'package:bike_rental_online/data/repositories_impl/user_repository_impl.dart';
 import 'package:bike_rental_online/domain/repositories/auth_repository.dart';
+import 'package:bike_rental_online/domain/repositories/user_repository.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
+import 'package:bike_rental_online/presentation/screens/main_tab/main_tab_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
@@ -26,6 +29,7 @@ class AuthController extends GetxController {
   RxBool isConfirmPasswordVisible = false.obs;
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final UserRepository _userRepository = UserRepositoryImpl();
   final AuthRepository authRepository;
   AuthController(this.authRepository);
   Rx<User?> currentUser = Rx<User?>(null);
@@ -40,7 +44,7 @@ class AuthController extends GetxController {
         isLoggedIn.value = true;
         Get.snackbar('Đăng nhập', 'Đăng nhập thành công');
         await Future.delayed(Duration(seconds: 2));
-        Get.offAllNamed(AppRoutes.Dashboard);
+        Get.to(MainTabView());
       }
     } catch (e) {
       print('Đăng nhập không thành công: $e');
@@ -73,7 +77,17 @@ class AuthController extends GetxController {
       bool registerSuccess = await authRepository.register(email, password);
       if (registerSuccess) {
         isLoggedIn.value = true;
-        Get.offAllNamed(AppRoutes.Dashboard);
+        UserModel user = UserModel(
+          id: FirebaseAuth.instance.currentUser!.uid,
+          email: email,
+          password: password,
+          address: '',
+          phoneNumber: '',
+          name: '',
+          avatarUrl: '',
+        );
+        await _userRepository.createUser(user);
+        Get.offAllNamed(AppRoutes.PhoneInput);
       }
     } catch (e) {
       print('Đăng ký không thành công: $e');

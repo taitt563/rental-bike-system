@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
-import 'presentation/controllers/cart_controller.dart';
 
 class MyApp extends StatelessWidget {
-  final CartController _cartController = Get.put(CartController());
   MyApp({super.key});
   @override
   Widget build(BuildContext context) {

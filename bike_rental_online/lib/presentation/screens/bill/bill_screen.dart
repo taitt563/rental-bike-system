@@ -1,6 +1,7 @@
 import 'package:bike_rental_online/data/models/cart_model.dart';
 import 'package:bike_rental_online/presentation/controllers/cart_controller.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
+import 'package:bike_rental_online/presentation/screens/checkout/checkout_screen.dart';
 import 'package:bike_rental_online/presentation/screens/home/home_screen.dart';
 import 'package:bike_rental_online/presentation/screens/success/success_screen.dart';
 import 'package:flutter/material.dart' as FlutterMaterial;
@@ -40,7 +41,7 @@ class _BillScreenState extends State<BillScreen> {
                   paymentConfirmed = true;
                 });
                 // Đóng hộp thoại
-                Navigator.of(context).pop();
+                Get.to(() => CheckoutScreen());
               },
               child: Text('Pay'),
             ),

@@ -4,6 +4,7 @@ import 'package:bike_rental_online/domain/bindings/bike_binding.dart';
 import 'package:bike_rental_online/domain/bindings/cart_binding.dart';
 import 'package:bike_rental_online/domain/bindings/dashboard_binding.dart';
 import 'package:bike_rental_online/domain/bindings/home_binding.dart';
+import 'package:bike_rental_online/domain/bindings/maintab_binding.dart';
 import 'package:bike_rental_online/domain/bindings/posts_binding.dart';
 import 'package:bike_rental_online/domain/bindings/splash_binding.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
@@ -13,13 +14,16 @@ import 'package:bike_rental_online/presentation/screens/dashboard/dashboard_scre
 import 'package:bike_rental_online/presentation/screens/detail/bike_details_screen.dart';
 import 'package:bike_rental_online/presentation/screens/home/home_screen.dart';
 import 'package:bike_rental_online/presentation/screens/mailbox/mailbox_screen.dart';
+import 'package:bike_rental_online/presentation/screens/main_tab/main_tab_screen.dart';
 import 'package:bike_rental_online/presentation/screens/posts/posts_page.dart';
+import 'package:bike_rental_online/presentation/screens/profile/profile_screen.dart';
 import 'package:bike_rental_online/presentation/screens/settings/setting_screen.dart';
 import 'package:bike_rental_online/presentation/screens/signin/password_input_screen.dart';
 import 'package:bike_rental_online/presentation/screens/signin/signin_screen.dart';
+import 'package:bike_rental_online/presentation/screens/signup/otp_screen.dart';
+import 'package:bike_rental_online/presentation/screens/signup/phone_input_screen.dart';
 import 'package:bike_rental_online/presentation/screens/signup/signup_screen.dart';
 import 'package:bike_rental_online/presentation/screens/splash/splash_screen.dart';
-import 'package:bike_rental_online/presentation/screens/success/success_screen.dart';
 import 'package:get/get.dart';
 
 class AppPages {
@@ -45,6 +49,20 @@ class AppPages {
       binding: AuthBinding(),
     ),
 
+    GetPage(
+      name: AppRoutes.MainTab,
+      page: () => MainTabView(),
+      binding: MainTabBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.PhoneInput,
+      page: () => PhoneInputScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.OTPInput,
+      page: () => OTPScreen(),
+    ),
     GetPage(
       name: AppRoutes.Dashboard,
       page: () => DashBoardScreen(),
@@ -80,6 +98,10 @@ class AppPages {
       binding: CartBinding(),
     ),
 
+    GetPage(
+      name: AppRoutes.Profile,
+      page: () => ProfileScreen(),
+    ),
     // GetPage(
     //   name: AppRoutes.PostsPage,
     //   page: () => PostsPage(),

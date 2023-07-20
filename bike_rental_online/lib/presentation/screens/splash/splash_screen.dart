@@ -1,5 +1,4 @@
 import 'package:bike_rental_online/presentation/controllers/splash_controller.dart';
-import 'package:bike_rental_online/presentation/screens/components/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

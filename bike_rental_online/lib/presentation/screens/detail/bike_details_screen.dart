@@ -162,7 +162,7 @@ class BikeDetailScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: FlutterMaterial.Colors.white,
+          color: Colors.white,
           boxShadow: [
             if (true)
               const BoxShadow(
