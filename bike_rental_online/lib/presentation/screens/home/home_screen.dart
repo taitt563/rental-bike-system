@@ -1,6 +1,5 @@
 import 'package:bike_rental_online/data/models/bikes_model.dart';
 import 'package:bike_rental_online/presentation/controllers/bike_controller.dart';
-import 'package:bike_rental_online/presentation/controllers/home_controller.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -55,6 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.grey), // Đặt border cho Container
                 ),
                 child: TextField(
+                  onChanged: (value) {
+                    _bikeController.searchBikes(value);
+                  },
                   decoration: InputDecoration(
                     prefixIcon: Icon(
                       Icons.search,
@@ -153,7 +155,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: Obx(
                 () {
-                  final bikes = _bikeController.bikes;
+                  final bikes = _bikeController.filteredBikes;
+
                   if (bikes.isEmpty) {
                     return Center(child: Text('No bikes available'));
                   } else {
@@ -222,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         SizedBox(height: 4.0),
                                         Text(
-                                          '\$${bike.price?['1hour']?.toStringAsFixed(2)}/ 1 hour', // Hiển thị giá
+                                          '\$${bike.price?['days']?.toStringAsFixed(2)}/ per day', // Hiển thị giá
                                           style: TextStyle(
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,

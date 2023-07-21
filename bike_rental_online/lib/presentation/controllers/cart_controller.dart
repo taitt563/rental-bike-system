@@ -1,13 +1,19 @@
 import 'package:bike_rental_online/data/models/bikes_model.dart';
 import 'package:bike_rental_online/data/models/cart_model.dart';
+import 'package:bike_rental_online/data/models/order_model.dart';
+import 'package:bike_rental_online/data/repositories_impl/order_repository_impl.dart';
+import 'package:bike_rental_online/domain/repositories/order_repository.dart';
+import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
+  final OrderRepository _orderRepository = OrderRepositoryImpl();
   final RxList<CartModel> cartItems = <CartModel>[].obs;
+
   DateTime? startAt;
   DateTime? endAt;
-
+  double _totalAmount = 0.0;
   void setStartDateTime(DateTime dateTime) {
     startAt = dateTime;
   }
@@ -63,7 +69,19 @@ class CartController extends GetxController {
       );
     }
 
-    Get.snackbar("Giỏ hàng", "Sản phẩm ${bike.name} đã được thêm vào giỏ hàng");
+    Get.snackbar(
+      "Giỏ hàng",
+      "Sản phẩm ${bike.name} đã được thêm vào giỏ hàng",
+      snackPosition: SnackPosition.BOTTOM,
+      icon: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset(
+          'assets/images/logo.png',
+          width: 50,
+          height: 50,
+        ),
+      ),
+    );
   }
 
   // Tính tổng giá tiền
@@ -96,5 +114,29 @@ class CartController extends GetxController {
     cartItems.remove(cartItem);
     // Cập nhật lại tổng giá tiền
     update();
+  }
+
+  void createOrder(OrderModel order) {
+    try {
+      // Call the createOrder method from the order repository
+      // You need to have an implementation for the order repository
+      // that handles creating the order in the backend
+      _orderRepository.createOrder(order);
+
+      // Clear the cart after the order is created
+      // cartItems.clear();
+      double newTotalAmount = 0.0;
+      for (var item in cartItems) {
+        newTotalAmount += item.bike.price?['1hour']! * item.getQuantity();
+      }
+      updateTotalAmount(newTotalAmount);
+    } catch (e) {
+      print('Error creating order: $e');
+    }
+  }
+
+  void updateTotalAmount(double amount) {
+    _totalAmount = amount;
+    update(); // Notify GetX that the value has changed so that it updates the UI
   }
 }

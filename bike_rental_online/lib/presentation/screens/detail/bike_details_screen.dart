@@ -1,3 +1,4 @@
+import 'package:bike_rental_online/core/constants/colors.dart';
 import 'package:bike_rental_online/data/models/bikes_model.dart';
 import 'package:bike_rental_online/presentation/controllers/cart_controller.dart';
 import 'package:bike_rental_online/presentation/controllers/detail_controller.dart';
@@ -72,18 +73,23 @@ class BikeDetailScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 16.0),
+                      // Text(
+                      //   '1 day',
+                      //   style: TextStyle(
+                      //     fontSize: 18.0,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
                       Text(
-                        '1 hour',
+                        '\$${bike.price?['days']?.toStringAsFixed(2) ?? ''}/ per day',
                         style: TextStyle(
                           fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(
-                        '\$${bike.price?['1hour']?.toStringAsFixed(2) ?? ''}',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                        ),
+                      SizedBox(height: 16.0),
+                      Container(
+                        decoration: BoxDecoration(color: TColors.textfield),
+                        height: 8,
                       ),
                       SizedBox(height: 16.0),
                       // Thêm các thông tin khác của xe
@@ -99,6 +105,11 @@ class BikeDetailScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16.0,
                         ),
+                      ),
+                      SizedBox(height: 16.0),
+                      Container(
+                        decoration: BoxDecoration(color: TColors.textfield),
+                        height: 8,
                       ),
                       SizedBox(height: 16.0),
                       Text(
@@ -137,6 +148,11 @@ class BikeDetailScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16.0,
                         ),
+                      ),
+                      SizedBox(height: 16.0),
+                      Container(
+                        decoration: BoxDecoration(color: TColors.textfield),
+                        height: 8,
                       ),
                       SizedBox(height: 16.0),
                       Text(

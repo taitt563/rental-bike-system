@@ -1,4 +1,6 @@
 import 'package:bike_rental_online/core/constants/colors.dart';
+import 'package:bike_rental_online/presentation/screens/checkout/add_card_screen.dart';
+import 'package:bike_rental_online/presentation/screens/checkout/checkout_message_screen.dart';
 import 'package:bike_rental_online/presentation/screens/components/round_button.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +24,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Checkout"),
+        title: Text("Phương thức thanh toán"),
       ),
       backgroundColor: TColors.white,
       body: SingleChildScrollView(
@@ -38,7 +40,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Delivery Address",
+                      "Địa chỉ trả xe",
                       textAlign: TextAlign.center,
                       style:
                           TextStyle(color: TColors.secondaryText, fontSize: 12),
@@ -51,7 +53,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       children: [
                         Expanded(
                           child: Text(
-                            "653 Nostrand Ave.\nBrooklyn, NY 11216",
+                            "Chờ cập nhật",
                             style: TextStyle(
                                 color: TColors.primaryText,
                                 fontSize: 15,
@@ -71,7 +73,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             // );
                           },
                           child: Text(
-                            "Change",
+                            "Chỉnh sửa",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: TColors.primary,
@@ -100,7 +102,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Payment method",
+                          "Phương thức thanh toán",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: TColors.secondaryText,
@@ -108,10 +110,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                               fontWeight: FontWeight.w500),
                         ),
                         TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            showModalBottomSheet(
+                                context: context,
+                                backgroundColor: Colors.transparent,
+                                isScrollControlled: true,
+                                builder: (context) {
+                                  return AddCardScreen();
+                                });
+                          },
                           icon: Icon(Icons.add, color: TColors.primary),
                           label: Text(
-                            "Add Card",
+                            "Thêm Credit Card",
                             style: TextStyle(
                                 color: TColors.primary,
                                 fontSize: 13,
@@ -180,132 +190,132 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 decoration: BoxDecoration(color: TColors.textfield),
                 height: 8,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Sub Total",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: TColors.primaryText,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          "\$68",
-                          style: TextStyle(
-                              color: TColors.primaryText,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Delivery Cost",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: TColors.primaryText,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          "\$2",
-                          style: TextStyle(
-                              color: TColors.primaryText,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Discount",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: TColors.primaryText,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          "-\$4",
-                          style: TextStyle(
-                              color: TColors.primaryText,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Divider(
-                      color: TColors.secondaryText.withOpacity(0.5),
-                      height: 1,
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Total",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: TColors.primaryText,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          "\$66",
-                          style: TextStyle(
-                              color: TColors.primaryText,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                decoration: BoxDecoration(color: TColors.textfield),
-                height: 8,
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 25),
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       const SizedBox(
+              //         height: 15,
+              //       ),
+              //       Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         children: [
+              //           Text(
+              //             "Sub Total",
+              //             textAlign: TextAlign.center,
+              //             style: TextStyle(
+              //                 color: TColors.primaryText,
+              //                 fontSize: 13,
+              //                 fontWeight: FontWeight.w500),
+              //           ),
+              //           Text(
+              //             "\$68",
+              //             style: TextStyle(
+              //                 color: TColors.primaryText,
+              //                 fontSize: 13,
+              //                 fontWeight: FontWeight.w700),
+              //           )
+              //         ],
+              //       ),
+              //       const SizedBox(
+              //         height: 8,
+              //       ),
+              //       Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         children: [
+              //           Text(
+              //             "Delivery Cost",
+              //             textAlign: TextAlign.center,
+              //             style: TextStyle(
+              //                 color: TColors.primaryText,
+              //                 fontSize: 13,
+              //                 fontWeight: FontWeight.w500),
+              //           ),
+              //           Text(
+              //             "\$2",
+              //             style: TextStyle(
+              //                 color: TColors.primaryText,
+              //                 fontSize: 13,
+              //                 fontWeight: FontWeight.w700),
+              //           )
+              //         ],
+              //       ),
+              //       const SizedBox(
+              //         height: 8,
+              //       ),
+              //       Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         children: [
+              //           Text(
+              //             "Discount",
+              //             textAlign: TextAlign.center,
+              //             style: TextStyle(
+              //                 color: TColors.primaryText,
+              //                 fontSize: 13,
+              //                 fontWeight: FontWeight.w500),
+              //           ),
+              //           Text(
+              //             "-\$4",
+              //             style: TextStyle(
+              //                 color: TColors.primaryText,
+              //                 fontSize: 13,
+              //                 fontWeight: FontWeight.w700),
+              //           )
+              //         ],
+              //       ),
+              //       const SizedBox(
+              //         height: 15,
+              //       ),
+              //       Divider(
+              //         color: TColors.secondaryText.withOpacity(0.5),
+              //         height: 1,
+              //       ),
+              //       const SizedBox(
+              //         height: 15,
+              //       ),
+              //       Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         children: [
+              //           Text(
+              //             "Total",
+              //             textAlign: TextAlign.center,
+              //             style: TextStyle(
+              //                 color: TColors.primaryText,
+              //                 fontSize: 13,
+              //                 fontWeight: FontWeight.w500),
+              //           ),
+              //           Text(
+              //             "\$66",
+              //             style: TextStyle(
+              //                 color: TColors.primaryText,
+              //                 fontSize: 15,
+              //                 fontWeight: FontWeight.w700),
+              //           )
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+              // Container(
+              //   decoration: BoxDecoration(color: TColors.textfield),
+              //   height: 8,
+              // ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
                 child: RoundButton(
-                    title: "Send Order",
+                    title: "Đặt xe",
                     onPressed: () {
                       showModalBottomSheet(
                           context: context,
                           backgroundColor: Colors.transparent,
                           isScrollControlled: true,
                           builder: (context) {
-                            return Container();
+                            return CheckoutMessageView();
                           });
                     }),
               ),

@@ -6,6 +6,7 @@ import 'package:bike_rental_online/domain/repositories/user_repository.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
 import 'package:bike_rental_online/presentation/screens/main_tab/main_tab_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
@@ -42,13 +43,37 @@ class AuthController extends GetxController {
       bool loginSuccess = await authRepository.login(email, password);
       if (loginSuccess) {
         isLoggedIn.value = true;
-        Get.snackbar('Đăng nhập', 'Đăng nhập thành công');
+        Get.snackbar(
+          'Đăng nhập',
+          'Đăng nhập thành công',
+          snackPosition: SnackPosition.BOTTOM,
+          icon: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/images/logo.png',
+              width: 50,
+              height: 50,
+            ),
+          ),
+        );
         await Future.delayed(Duration(seconds: 2));
         Get.to(MainTabView());
       }
     } catch (e) {
       print('Đăng nhập không thành công: $e');
-      Get.snackbar('Đăng nhập', 'Đăng nhập không thành công');
+      Get.snackbar(
+        'Đăng nhập',
+        'Đăng nhập không thành công',
+        snackPosition: SnackPosition.BOTTOM,
+        icon: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            'assets/images/logo.png',
+            width: 50,
+            height: 50,
+          ),
+        ),
+      );
     }
   }
 
@@ -87,11 +112,37 @@ class AuthController extends GetxController {
           avatarUrl: '',
         );
         await _userRepository.createUser(user);
+        Get.snackbar(
+          'Thông báo',
+          'Đăng ký thành công',
+          snackPosition: SnackPosition.BOTTOM,
+          icon: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/images/logo.png',
+              width: 50,
+              height: 50,
+            ),
+          ),
+        );
+        await Future.delayed(Duration(seconds: 2));
         Get.offAllNamed(AppRoutes.PhoneInput);
       }
     } catch (e) {
       print('Đăng ký không thành công: $e');
-      Get.snackbar('Thông báo', 'Đăng ký không thành công');
+      Get.snackbar(
+        'Thông báo',
+        'Đăng ký không thành công',
+        snackPosition: SnackPosition.BOTTOM,
+        icon: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            'assets/images/logo.png',
+            width: 50,
+            height: 50,
+          ),
+        ),
+      );
     }
   }
 

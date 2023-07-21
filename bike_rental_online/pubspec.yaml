@@ -50,6 +50,8 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   image_picker: ^1.0.1
   calendar_agenda: ^0.0.2+3
+  dotted_border: ^2.0.0+3
+  card_swiper: ^3.0.1
   
 
 dev_dependencies:

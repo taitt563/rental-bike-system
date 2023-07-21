@@ -14,5 +14,6 @@ class AppRoutes {
   static const BikeDetail = '/bikeDetail';
   static const PostsPage = '/postsPage';
   static const Cart = '/cart';
+  static const Order = '/order';
   static const Profile = '/profile';
 }

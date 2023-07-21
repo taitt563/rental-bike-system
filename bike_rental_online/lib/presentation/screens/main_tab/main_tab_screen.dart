@@ -1,8 +1,11 @@
 import 'package:bike_rental_online/core/constants/color_extension.dart';
 import 'package:bike_rental_online/presentation/screens/bookmarks/bookmark_screen.dart';
+import 'package:bike_rental_online/presentation/screens/cards/cards_screen.dart';
 import 'package:bike_rental_online/presentation/screens/cart/cart_screen.dart';
+import 'package:bike_rental_online/presentation/screens/checkout/add_card_screen.dart';
 import 'package:bike_rental_online/presentation/screens/home/home_screen.dart';
 import 'package:bike_rental_online/presentation/screens/mailbox/mailbox_screen.dart';
+import 'package:bike_rental_online/presentation/screens/notifications/notification_screen.dart';
 import 'package:bike_rental_online/presentation/screens/settings/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -69,7 +72,7 @@ class _MainTabViewState extends State<MainTabView> {
                               onPressed: () {
                                 setState(() {
                                   selectTab = 1;
-                                  currentTabView = BookmarkScreen();
+                                  currentTabView = SettingsScreen();
                                 });
                               },
                               icon: Image.asset(
@@ -89,7 +92,7 @@ class _MainTabViewState extends State<MainTabView> {
                               onPressed: () {
                                 setState(() {
                                   selectTab = 2;
-                                  currentTabView = MailboxScreen();
+                                  currentTabView = NotificationsScreen();
                                 });
                               },
                               icon: Image.asset(
@@ -105,7 +108,7 @@ class _MainTabViewState extends State<MainTabView> {
                               onPressed: () {
                                 setState(() {
                                   selectTab = 3;
-                                  currentTabView = SettingsScreen();
+                                  currentTabView = CardsScreen();
                                 });
                               },
                               icon: Image.asset(

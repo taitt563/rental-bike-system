@@ -1,11 +1,10 @@
-import 'package:bike_rental_online/data/models/cart_model.dart';
 import 'package:bike_rental_online/domain/bindings/auth_binding.dart';
 import 'package:bike_rental_online/domain/bindings/bike_binding.dart';
 import 'package:bike_rental_online/domain/bindings/cart_binding.dart';
 import 'package:bike_rental_online/domain/bindings/dashboard_binding.dart';
 import 'package:bike_rental_online/domain/bindings/home_binding.dart';
 import 'package:bike_rental_online/domain/bindings/maintab_binding.dart';
-import 'package:bike_rental_online/domain/bindings/posts_binding.dart';
+import 'package:bike_rental_online/domain/bindings/order_binding.dart';
 import 'package:bike_rental_online/domain/bindings/splash_binding.dart';
 import 'package:bike_rental_online/presentation/routes/app_routes.dart';
 import 'package:bike_rental_online/presentation/screens/bookmarks/bookmark_screen.dart';
@@ -15,7 +14,7 @@ import 'package:bike_rental_online/presentation/screens/detail/bike_details_scre
 import 'package:bike_rental_online/presentation/screens/home/home_screen.dart';
 import 'package:bike_rental_online/presentation/screens/mailbox/mailbox_screen.dart';
 import 'package:bike_rental_online/presentation/screens/main_tab/main_tab_screen.dart';
-import 'package:bike_rental_online/presentation/screens/posts/posts_page.dart';
+import 'package:bike_rental_online/presentation/screens/order/order_screen.dart';
 import 'package:bike_rental_online/presentation/screens/profile/profile_screen.dart';
 import 'package:bike_rental_online/presentation/screens/settings/setting_screen.dart';
 import 'package:bike_rental_online/presentation/screens/signin/password_input_screen.dart';
@@ -96,6 +95,12 @@ class AppPages {
       name: AppRoutes.Cart,
       page: () => CartScreen(),
       binding: CartBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.Order,
+      page: () => OrderScreen(),
+      binding: OrderBinding(),
     ),
 
     GetPage(

@@ -1,12 +1,14 @@
 import 'dart:math';
 
+import 'package:bike_rental_online/data/models/order_model.dart';
 import 'package:bike_rental_online/presentation/controllers/cart_controller.dart';
-import 'package:bike_rental_online/presentation/screens/bill/bill_screen.dart';
+import 'package:bike_rental_online/presentation/controllers/order_controller.dart';
+import 'package:bike_rental_online/presentation/controllers/profile_controller.dart';
+import 'package:bike_rental_online/presentation/screens/order/order_screen.dart';
 import 'package:bike_rental_online/presentation/screens/cart/delivery_address.dart';
 import 'package:calendar_agenda/calendar_agenda.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class CartScreen extends StatefulWidget {
   @override
@@ -20,21 +22,63 @@ class _CartScreenState extends State<CartScreen> {
   CalendarAgendaController _calendarAgendaControllerNotAppBar =
       CalendarAgendaController();
 
-  late DateTime _selectedDateAppBBar;
-  late DateTime _selectedDateNotAppBBar;
+  // late DateTime _selectedDateAppBBar;
+  // late DateTime _selectedDateNotAppBBar;
   Random random = new Random();
 
   final CartController _cartController = Get.find<CartController>();
-
+  final ProfileController _profileController = Get.find<ProfileController>();
   DateTime? startAt;
   DateTime? endAt;
 
   String selectedDuration = '';
 
+  String generateOrderId() {
+    // Get the current timestamp in milliseconds
+    final int timestamp = DateTime.now().millisecondsSinceEpoch;
+
+    // Generate a random number between 1000 and 9999
+    final int randomNumber = Random().nextInt(9000) + 1000;
+
+    // Combine the timestamp and random number to create the order ID
+    return 'ORDER$timestamp$randomNumber';
+  }
+
   void checkout() {
     // Chuyển sang trang hóa đơn và truyền thông tin từ giỏ hàng
+    final String userId = _profileController.user.id;
+    final List<String> bikeIds =
+        _cartController.cartItems.map((item) => item.bike.id!).toList();
 
-    Get.to(BillScreen());
+    if (_cartController.startAt == null || _cartController.endAt == null) {
+      Get.snackbar(
+        'Error',
+        'Please select both start date and end date.',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      return;
+    }
+
+    final double totalAmount = _cartController.totalAmount;
+
+    final order = OrderModel(
+      order_id:
+          generateOrderId(), // You can generate an order ID or use any other method
+      user_id: userId,
+      bike_id: bikeIds, // Combine bike IDs into a comma-separated string
+      startAt: _cartController.startAt!,
+      endAt: _cartController.endAt!,
+      totalAmount: totalAmount,
+      pickupLocation: _profileController
+          .user.address, // Replace with the actual pickup location
+      dropLocation: _profileController
+          .user.address, // Replace with the actual drop location
+    );
+    _cartController.createOrder(order);
+    Get.find<OrderController>().order.value = order;
+    Get.to(() => OrderScreen());
   }
 
   void showDateTimePicker(bool isStartAt) async {
@@ -89,8 +133,8 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     super.initState();
-    _selectedDateAppBBar = DateTime.now();
-    _selectedDateNotAppBBar = DateTime.now();
+    // _selectedDateAppBBar = DateTime.now();
+    // _selectedDateNotAppBBar = DateTime.now();
   }
 
   @override
@@ -118,7 +162,7 @@ class _CartScreenState extends State<CartScreen> {
                   _calendarAgendaControllerAppBar.goToDay(DateTime.now());
                 },
                 child: Text(
-                  'Pick Start Date',
+                  'Chọn ngày thuê',
                   style: TextStyle(
                     color: Colors.white,
                   ),
@@ -167,7 +211,7 @@ class _CartScreenState extends State<CartScreen> {
                           .goToDay(DateTime.now().add(Duration(days: 1)));
                     },
                     child: Text(
-                      'Pick End Date',
+                      'Chọn ngày trả xe',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -295,32 +339,30 @@ class _CartScreenState extends State<CartScreen> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Total: \$${_cartController.totalAmount.toStringAsFixed(2)}',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            ElevatedButton(
-              onPressed: checkout,
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4.0),
-                ),
-                primary: Color(0xFFFF7643),
-                onPrimary: Colors.white,
-                padding: EdgeInsets.symmetric(
-                  vertical: 16.0,
-                  horizontal: 24.0,
-                ),
-              ),
+            Expanded(
               child: Text(
-                'Checkout',
+                'Tổng: \$${_cartController.totalAmount.toStringAsFixed(2)}',
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Expanded(
+              child: ElevatedButton(
+                onPressed: checkout,
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4.0),
+                  ),
+                  primary: Color(0xFFFF7643),
+                  onPrimary: Colors.white,
+                  padding: EdgeInsets.all(13.0),
+                ),
+                child: Text(
+                  'Tiếp tục',
                 ),
               ),
             ),

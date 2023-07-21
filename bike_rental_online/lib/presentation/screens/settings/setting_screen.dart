@@ -13,28 +13,35 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBarWidget(
-          scaffoldKey: scaffoldKey, title: "Settings", showDrawer: false),
+        scaffoldKey: scaffoldKey,
+        title: "Cài đặt",
+        showDrawer: false,
+      ),
       body: ListView(
         children: [
           ListTile(
+            leading: Icon(Icons.account_circle),
             title: Text("Account Settings"),
             onTap: () {
               Get.to(() => ProfileScreen());
             },
           ),
           ListTile(
+            leading: Icon(Icons.notifications_none_outlined),
             title: Text("Notification Settings"),
             onTap: () {
-              // Xử lý khi người dùng chọn "Notification Settings"
+              // Handle when the user selects "Notification Settings"
             },
           ),
           ListTile(
+            leading: Icon(Icons.lock),
             title: Text("Privacy Settings"),
             onTap: () {
-              // Xử lý khi người dùng chọn "Privacy Settings"
+              // Handle when the user selects "Privacy Settings"
             },
           ),
           ListTile(
+            leading: Icon(Icons.logout),
             title: Text("Log Out"),
             onTap: () {
               authController.logoutAndReset();
